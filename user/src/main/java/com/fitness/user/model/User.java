@@ -36,3 +36,4 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 }
+// 56 min
