@@ -1,1 +1,27 @@
+# IDE
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Maven
+target/
+*.jar
+*.war
+*.class
+
+# Build
+build/
+
+# Dependencies
+.classpath
+.project
+.settings/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db/
