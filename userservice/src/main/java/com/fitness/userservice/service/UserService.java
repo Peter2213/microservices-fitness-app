@@ -8,7 +8,10 @@ import com.fitness.userservice.dto.UserResponse;
 import com.fitness.userservice.model.User;
 import com.fitness.userservice.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class UserService {
     @Autowired
     private UserRepository userRepository;
@@ -32,8 +35,7 @@ public class UserService {
         return userResponse;
     }
     public UserResponse getUserProfile(String userId){
-        User user = userRepository.findById(userId)
-        .orElseThrow(() -> new RuntimeException("user not found!"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("user not found!"));
     UserResponse userResponse = new UserResponse();
     userResponse.setId(user.getId());
     userResponse.setEmail(user.getEmail());
@@ -42,5 +44,9 @@ public class UserService {
     userResponse.setCreatedAt(user.getCreatedAt());
     userResponse.setUpdatedAt(user.getUpdatedAt());
     return userResponse;
+    }
+    public Boolean existsByUserId(String userId){
+        log.info("Calling User Validation API for userId: {}", userId);
+        return userRepository.existsById(userId);
     }
 }

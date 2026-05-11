@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 @Configuration
 @EnableMongoAuditing
 public class MongoConfig {
- // 2:18
+    
 }

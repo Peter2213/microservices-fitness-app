@@ -17,7 +17,13 @@ import lombok.RequiredArgsConstructor;
 public class ActivityService {
 
     private final ActivityRepository activityRepository;
+    private final UserValidationService userValidationService;
+
     public ActivityResponse trackActivity(ActivityRequest activityRequest){
+        Boolean isValidUser = userValidationService.validateUser(activityRequest.getUserId());
+        if(!isValidUser){
+            throw new RuntimeException("user not found !"); 
+        }
         Activity activity = Activity.builder()
                 .userId(activityRequest.getUserId())
                 .type(activityRequest.getType())
@@ -54,4 +60,5 @@ public class ActivityService {
         .orElseThrow(() -> new RuntimeException("Activity not found! "));
         return mapToResponse(activity);
     }
+    // 3:12   
 }
