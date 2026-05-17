@@ -28,7 +28,6 @@ public class UserValidationService {
             }
             else if(e.getStatusCode().value() == 400){
                 throw new RuntimeException("User Not Found: " + userId);
-                // 3:18
             }
         }
         return false;

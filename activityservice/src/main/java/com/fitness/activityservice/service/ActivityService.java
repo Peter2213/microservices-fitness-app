@@ -44,7 +44,7 @@ public class ActivityService {
         Activity savedActivity = activityRepository.save(activity);
         // publish to rabbitmq for AI processing 
         try{
-            rabbitTemplate.convertAndSend(exchange, routingKey, savedActivity)
+            rabbitTemplate.convertAndSend(exchange, routingKey, savedActivity);
         } catch(Exception e){
             log.error("failed to publish activity to RabbitMq", e);
 
@@ -76,5 +76,4 @@ public class ActivityService {
         .orElseThrow(() -> new RuntimeException("Activity not found! "));
         return mapToResponse(activity);
     }
-    // 3:12   
 }
