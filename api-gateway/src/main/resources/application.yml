@@ -1,0 +1,18 @@
+# spring.application.name=api-gateway
+spring:
+    application:
+        name: api-gateway
+    cloud:
+        gateway:
+            routes:
+            - id: userservice
+              uri: lb://USERSERVICE
+              predicates:
+                - Path=/api/users/**
+server:
+    port: 8080
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
