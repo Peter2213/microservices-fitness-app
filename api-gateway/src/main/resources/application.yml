@@ -9,6 +9,14 @@ spring:
               uri: lb://USERSERVICE
               predicates:
                 - Path=/api/users/**
+            - id: activityservice
+              uri: lb://ACTIVITYSERVICE
+              predicates:
+                - Path=/api/activities/**
+            - id: aiservice
+              uri: lb://AISERVICE
+              predicates:
+                - Path=/api/recommendations/**
 server:
     port: 8080
 
