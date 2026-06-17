@@ -17,6 +17,7 @@ spring:
               uri: lb://AISERVICE
               predicates:
                 - Path=/api/recommendations/**
+                
 server:
     port: 8080
 
